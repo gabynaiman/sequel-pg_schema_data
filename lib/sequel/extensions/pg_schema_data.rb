@@ -14,7 +14,7 @@ module Sequel
         tables = tables - options.fetch(:ignore, [])
 
         tables.each do |table|
-          File.write File.join(path, "#{table}.csv"), copy_table(Sequel.qualify(schema, table), format: :csv)
+          File.write File.join(path, "#{table}.csv"), copy_table(Sequel.qualify(schema, table), format: :csv), encoding: 'ASCII-8BIT'
         end
       end
 
